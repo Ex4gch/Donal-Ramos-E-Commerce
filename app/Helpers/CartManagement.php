@@ -37,7 +37,6 @@ class CartManagement {
 
         self::addCartItemsToCookie($cart_items);
         return count($cart_items);
-
     }
 
     

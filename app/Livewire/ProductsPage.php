@@ -9,10 +9,14 @@ use Livewire\Attributes\Title;
 use App\Models\Product;
 use Livewire\WithPagination;
 use Livewire\Attributes\Url;
+use App\Helpers\CartManagement;
+use App\Livewire\Partials\Navbar;
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 #[Title('Products - Exagch')]
 class ProductsPage extends Component
 {
+
     use WithPagination;
 
     #[Url]
@@ -32,6 +36,17 @@ class ProductsPage extends Component
 
     #[Url]
     public $sort = 'latest';
+
+    public function addToCart($product_id){
+        
+       LivewireAlert::title('Success')
+             ->text('Product created successfully.')
+             ->success()
+             ->show();
+
+        $total_count = CartManagement::addItemToCart($product_id);
+        $this->dispatch('update-cart-count', total_count: $total_count)->to(Navbar::class);
+    }
 
     public function render()
     {
