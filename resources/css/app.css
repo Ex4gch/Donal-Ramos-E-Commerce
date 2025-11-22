@@ -1,6 +1,4 @@
 /* Preline must come BEFORE Tailwind directives */
-@import "../../node_modules/preline/variants.css";
-
 /* Tailwind v3 directives */
 @tailwind base;
 @tailwind components;
